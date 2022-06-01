@@ -1,7 +1,7 @@
-const Employee = require("./lib:/Employee");
 const Manager = require('./lib:/Manager');
 const Engineer = require('./lib:/Engineer.js');
 const Intern = require("./lib:/Intern");
+const Employee = require("./lib:/Employee");
 
 const generateManager = function (manager) {
   return `
@@ -21,7 +21,6 @@ const generateManager = function (manager) {
   `;
 }
 
-
 const generateEngineer = function (engineer) {
   return `
   <div class="col-4 mt-4">
@@ -40,7 +39,6 @@ const generateEngineer = function (engineer) {
   `
 }
 
- 
 const generateIntern = function (intern) {
   return `
   <div class="col-4 mt-4">
@@ -59,32 +57,26 @@ const generateIntern = function (intern) {
   `
 };
 
-// create profile page 
 generateProfile = (answers) => {
 
-  // array for cards 
   pageArray = []; 
 
   for (let i = 0; i < answers.length; i++) {
       const employee = answers[i];
       const role = employee.getRole(); 
 
-
-      // call manager function
       if (role === 'Manager') {
           const managerCard = generateManager(employee);
 
           pageArray.push(managerCard);
       }
 
-      // call engineer function
       if (role === 'Engineer') {
           const engineerCard = generateEngineer(employee);
 
           pageArray.push(engineerCard);
       }
 
-      // call intern function 
       if (role === 'Intern') {
           const internCard = generateIntern(employee);
 
@@ -93,18 +85,16 @@ generateProfile = (answers) => {
       
   }
 
-  // joining strings 
   const employeeCards = pageArray.join('')
-
 
   const generateTeam = generateTeamPage(employeeCards); 
   return generateTeam;
 
 }
 
-// html 
 const generateTeamPage = function (employeeCards) {   
 return`
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

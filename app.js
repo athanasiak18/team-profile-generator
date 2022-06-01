@@ -1,11 +1,11 @@
+const inquirer = require("inquirer");
 const path = require('path');
+const fs = require('fs');
+const employees = [];
 const generateProfile = require('./generateProfile');
 const Manager = require('./lib:/Manager');
 const Engineer = require('./lib:/Engineer.js');
 const Intern = require('./lib:/Intern.js');
-const inquirer = require("inquirer");
-const fs = require('fs');
-const employees = [];
 
 
 function firstPrompt() {
@@ -14,7 +14,7 @@ inquirer
     {
         type:'list',
         name:'employeeRole',
-        message: "What is this Employee's Role?",
+        message: "Enter Employee Role",
         choices: ['Manager', 'Engineer', 'Intern', 'Exit']
     }
   ])
@@ -38,7 +38,7 @@ inquirer
   .catch((error) => {
     if (error.isTtyError) {
       console.log(error);
-      // Prompt couldn't be rendered in the current environment
+
     }
 
     });

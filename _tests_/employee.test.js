@@ -16,5 +16,5 @@ test('id', () => {
 })
 
 test('email', () => {
-    expect(employee.getEmail()).toBe('jeff@jeff.com');
+    expect(employee.getEmail()).toBe('martin@gmail.com');
 })
