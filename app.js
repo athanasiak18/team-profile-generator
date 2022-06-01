@@ -1,9 +1,9 @@
-const inquirer = require("inquirer");
 const path = require('path');
 const generateProfile = require('./generateProfile');
-const Manager = require('./lib:/manager.js');
-const Engineer = require('./lib/engineer.js');
-const Intern = require('./lib/intern.js');
+const Manager = require('./lib:/Manager');
+const Engineer = require('./lib:/Engineer.js');
+const Intern = require('./lib:/Intern.js');
+const inquirer = require("inquirer");
 const fs = require('fs');
 const employees = [];
 
@@ -14,7 +14,7 @@ inquirer
     {
         type:'list',
         name:'employeeRole',
-        message: "What is the role?",
+        message: "What is this Employee's Role?",
         choices: ['Manager', 'Engineer', 'Intern', 'Exit']
     }
   ])
@@ -38,6 +38,7 @@ inquirer
   .catch((error) => {
     if (error.isTtyError) {
       console.log(error);
+      // Prompt couldn't be rendered in the current environment
     }
 
     });
@@ -48,22 +49,22 @@ createManager = () => {
       {
         type: 'input',
         name: 'name',
-        message: 'Name:'
+        message: 'Employee name:'
       },
       {
         type: 'input',
         name: 'email',
-        message: 'Email:',
+        message: 'Employee email:',
       },
       {
         type:'number',
         name:'id',
-        message:'ID'
+        message:'Employee ID number'
       },
       {
         type:'number',
         name:'officeId',
-        message:'Office ID'
+        message:'Office ID number'
       },
     ]).then(answers => {
       console.log(answers);
@@ -78,22 +79,22 @@ createEngineer = () => {
     {
       type: 'input',
       name: 'name',
-      message: 'Name:'
+      message: 'Employee name:'
     },
     {
       type: 'input',
       name: 'email',
-      message: 'Email:',
+      message: 'Employee email:',
     },
     {
       type:'number',
       name:'id',
-      message:'ID number'
+      message:'Employee ID number'
     },
     {
       type: 'input',
       name: 'github',
-      message: 'GitHub User name:'
+      message: 'GitHub Username:'
     }
   ]).then(answers => {
     console.log(answers);
@@ -108,17 +109,17 @@ createIntern = () => {
     {
       type: 'input',
       name: 'name',
-      message: 'Name:'
+      message: 'Employee name:'
     },
     {
       type:'number',
       name:'id',
-      message:'ID number'
+      message:'Employee ID number'
     },
     {
       type: 'input',
       name: 'email',
-      message: 'Email:',
+      message: 'Employee email:',
     },
     {
       type: 'input',
@@ -135,7 +136,7 @@ createIntern = () => {
 
 function exit() {
   console.log('goodbye');
-  fs.writeFile('index.html', generateProfile(employees), (error) => {
+  fs.writeFile('profile.html', generateProfile(employees), (error) => {
     if(error) throw error;
   }) 
 }

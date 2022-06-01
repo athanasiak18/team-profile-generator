@@ -1,23 +1,22 @@
 const Manager = require('../lib/Manager');
-const manager = new Manager('Miranda','2','mirandapriestly@gmail.com','2025');
-
-test('enter values', () => {
+const manager = new Manager('Miranda','002','miranda@gmail.com','2025');
+test('test for input values', () => {
     expect(employee.name).toBe('Miranda');
-    expect(employee.id).toBe('2');
-    expect(employee.email).toBe('mirandapriestly@gmail.com')
+    expect(employee.id).toBe('002');
+    expect(employee.email).toBe('miranda@gmail.com')
 })
 
-test('name function', () => {
+test('name', () => {
     expect(employee.getName()).toBe('Miranda');
 })
 
-test('Id function', () => {
-    expect(employee.getId()).toBe('2');
+test('id', () => {
+    expect(employee.getId()).toBe('002');
 })
 
-test('Email function', () => {
-    expect(employee.getEmail()).toBe('mirandapriestly@gmail.com');
+test('email', () => {
+    expect(employee.getEmail()).toBe('miranda@gmail.com');
 })
-test('Office number function', () => {
+test('officeid', () => {
     expect(employee.getOfficeId()).toBe('2025');
 })
